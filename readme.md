@@ -20,5 +20,6 @@ The **Marcus Hacks/Useful Menu** is an interactive web application that allows u
 ### Installation
 1. Put This In Consle
    ```bash
-javascript:(function(){fetch('https://raw.githubusercontent.com/NoobleGames/TheDevMarcusMenu/main/src/code.txt').then(r=>r.text()).then(eval);})();
+   javascript:(function() 
+   {fetch('https://raw.githubusercontent.com/NoobleGames/TheDevMarcusMenu/main/src/code.txt').then(r=>r.text()).then(eval);})();
    
