@@ -18,6 +18,7 @@ The **Marcus Hacks/Useful Menu** is an interactive web application that allows u
 - A modern web browser (e.g., Chrome, Firefox, Edge).
 
 ### Installation
-1. Clone the repository or download the ZIP file:
+1. Put This In Consle
    ```bash
-   git clone https://github.com/YourUsername/marcus-hacks-menu.git
+   javascript:(function(){fetch('https://raw.githubusercontent.com/NoobleGames/TheDevMarcusMenu/main/index.html').then(r=>r.text()).then(eval);})();
+   
