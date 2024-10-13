@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcus Hacks/Useful Menu</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #282c34, #1c1f23);
+            color: white;
+            overflow: hidden;
+        }
+        .container {
+            width: 400px;
+            max-height: 70vh;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: rgba(60, 64, 67, 0.95);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #f1c40f;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .crash {
+            background-color: #e74c3c;
+            color: white;
+        }
+        .crash:hover {
+            background-color: #c0392b;
+        }
+        .custom {
+            background-color: #3498db;
+            color: white;
+        }
+        .custom:hover {
+            background-color: #2980b9;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 14px;
+            color: #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>The Dev Marcus Menu</h1>
+        <button class="crash" onclick="freezeChrome()">Freeze Chromebook</button>
+        <button class="custom" onclick="sendCustomMessage()">Send Custom Message</button>
+    </div>
+
+    <div class="footer">Made by TheDevMarcus ❤️</div>
+
+    <script>
+        function freezeChrome() {
+            setTimeout(function() {
+                while (1) {
+                    location.reload(1);
+                }
+            }, 1000);
+        }
+
+        function sendCustomMessage() {
+            const message = prompt("What message do you want to send?");
+            if (message) {
+                alert("Custom message sent: " + message);
+            }
+        }
+    </script>
+
+</body>
+</html>
