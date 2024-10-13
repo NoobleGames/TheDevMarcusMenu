@@ -6,61 +6,109 @@
     <title>Marcus Hacks/Useful Menu</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #282c34, #1c1f23);
+            background: linear-gradient(135deg, #141E30, #243B55);
             color: white;
             overflow: hidden;
+            transition: background 0.5s, color 0.5s;
         }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         .container {
             width: 400px;
-            max-height: 70vh;
-            padding: 30px;
-            border-radius: 15px;
-            background-color: rgba(60, 64, 67, 0.95);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            max-height: 90vh;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(50, 50, 50, 0.9);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.8);
             text-align: center;
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
         }
         h1 {
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #f1c40f;
+            margin-bottom: 25px;
+            font-size: 30px;
+            color: #FFD700;
+            letter-spacing: 1.2px;
         }
-        button {
+        button, label {
             width: 100%;
             padding: 15px;
-            font-size: 18px;
+            font-size: 20px;
             margin: 10px 0;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s ease;
+            display: block;
+        }
+        button:active, label:active {
+            transform: scale(0.98);
         }
         .crash {
-            background-color: #e74c3c;
+            background: linear-gradient(45deg, #e74c3c, #ff5733);
             color: white;
         }
         .crash:hover {
-            background-color: #c0392b;
+            background: linear-gradient(45deg, #c0392b, #e74c3c);
         }
         .custom {
-            background-color: #3498db;
+            background: linear-gradient(45deg, #3498db, #1e90ff);
             color: white;
         }
         .custom:hover {
-            background-color: #2980b9;
+            background: linear-gradient(45deg, #2980b9, #3498db);
+        }
+        .open-link {
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            color: white;
+        }
+        .open-link:hover {
+            background: linear-gradient(45deg, #27ae60, #229954);
+        }
+        .system-info {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+        }
+        .system-info:hover {
+            background: linear-gradient(45deg, #d35400, #e67e22);
+        }
+        .upload-sound, .play-sound, .stop-sound {
+            background: linear-gradient(45deg, #1abc9c, #16a085);
+            color: white;
+        }
+        .upload-sound:hover, .play-sound:hover, .stop-sound:hover {
+            background: linear-gradient(45deg, #148f77, #16a085);
+        }
+        .show-time, .text-color, .reset-page, .copy-text, .random-number, .clear-cookies, .disable-js, .restart-browser, .screenshot, .open-random-website, .generate-uuid, .auto-clicker, .generate-password {
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+        .show-time:hover, .text-color:hover, .reset-page:hover, .copy-text:hover, .random-number:hover, .clear-cookies:hover, .disable-js:hover, .restart-browser:hover, .screenshot:hover, .open-random-website:hover, .generate-uuid:hover, .auto-clicker:hover, .generate-password:hover {
+            background: linear-gradient(45deg, #8e44ad, #732d91);
         }
         .footer {
             margin-top: 20px;
             padding: 10px;
-            font-size: 14px;
+            font-size: 15px;
             color: #ccc;
             text-align: center;
+        }
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        input[type="file"] {
+            display: none;
         }
     </style>
 </head>
@@ -68,13 +116,36 @@
 
     <div class="container">
         <h1>The Dev Marcus Menu</h1>
-        <button class="crash" onclick="freezeChrome()">Freeze Chromebook</button>
-        <button class="custom" onclick="sendCustomMessage()">Send Custom Message</button>
+        <button class="crash" onclick="freezeChrome()">🛑 Freeze Chromebook</button>
+        <button class="custom" onclick="sendCustomMessage()">💬 Send Custom Message</button>
+        <button class="open-link" onclick="openWebsite()">🌐 Open Google</button>
+        <button class="system-info" onclick="showSystemInfo()">💻 View System Info</button>
+
+        <label for="upload-sound">🎵 Upload Sound</label>
+        <input type="file" id="upload-sound" accept="audio/*" onchange="handleSoundUpload()">
+        <button class="play-sound" onclick="playUploadedSound()">▶️ Play Sound</button>
+        <button class="stop-sound" onclick="stopSound()">⏹️ Stop Sound</button>
+
+        <button class="show-time" onclick="showDateTime()">🕒 Show Date & Time</button>
+        <button class="copy-text" onclick="copyToClipboard()">📋 Copy Text to Clipboard</button>
+        <button class="random-number" onclick="generateRandomNumber()">🎲 Generate Random Number</button>
+        <button class="clear-cookies" onclick="clearCookies()">🍪 Clear Cookies</button>
+        <button class="disable-js" onclick="disableJavaScript()">🚫 Disable JavaScript</button>
+        <button class="restart-browser" onclick="restartBrowser()">🔄 Restart Browser</button>
+
+        <button class="screenshot" onclick="takeScreenshot()">📷 Take Screenshot</button>
+        <button class="open-random-website" onclick="openRandomWebsite()">🔗 Open Random Website</button>
+        <button class="generate-uuid" onclick="generateUUID()">🔑 Generate UUID</button>
+        <button class="auto-clicker" onclick="toggleAutoClicker()">🔄 Auto Clicker</button>
+        <button class="generate-password" onclick="generatePassword()">🔐 Generate Password</button>
     </div>
 
-    <div class="footer">Made by TheDevMarcus ❤️</div>
+    <div class="footer">Made with ❤️ by <a href="#">TheDevMarcus</a></div>
 
     <script>
+        let audio = null;
+        let autoClickerInterval = null;
+
         function freezeChrome() {
             setTimeout(function() {
                 while (1) {
@@ -89,7 +160,132 @@
                 alert("Custom message sent: " + message);
             }
         }
-    </script>
 
+        function openWebsite() {
+            window.open('https://www.google.com', '_blank');
+        }
+
+        function showSystemInfo() {
+            const info = `
+                Browser: ${navigator.userAgent}
+                Platform: ${navigator.platform}
+                Language: ${navigator.language}
+            `;
+            alert(info);
+        }
+
+        function handleSoundUpload() {
+            const soundInput = document.getElementById('upload-sound');
+            const file = soundInput.files[0];
+
+            if (file) {
+                audio = new Audio(URL.createObjectURL(file));
+            } else {
+                alert("No sound file selected!");
+            }
+        }
+
+        function playUploadedSound() {
+            if (audio) {
+                audio.play();
+            } else {
+                alert("Please upload a sound first!");
+            }
+        }
+
+        function stopSound() {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+        }
+
+        function showDateTime() {
+            alert(new Date().toLocaleString());
+        }
+
+        function clearCookies() {
+            document.cookie.split(";").forEach(function(c) { 
+                document.cookie = c.split("=")[0] + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; 
+            });
+            alert("All cookies cleared!");
+        }
+
+        function disableJavaScript() {
+            alert("JavaScript has been disabled. Refresh the page to enable it again.");
+            // Note: JavaScript cannot disable itself; this is just a demonstration.
+        }
+
+        function restartBrowser() {
+            alert("Restarting the browser...");
+            // This function will prompt the user to refresh the page.
+            location.reload();
+        }
+
+        function copyToClipboard() {
+            const text = prompt("What text do you want to copy?");
+            if (text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("Text copied to clipboard: " + text);
+                });
+            }
+        }
+
+        function generateRandomNumber() {
+            alert("Random Number: " + Math.floor(Math.random() * 100));
+        }
+
+        function takeScreenshot() {
+            alert("Screenshot feature isn't implemented yet.");
+            // You can integrate libraries like html2canvas for this feature.
+        }
+
+        function openRandomWebsite() {
+            const websites = [
+                'https://www.reddit.com',
+                'https://www.github.com',
+                'https://www.stackoverflow.com'
+            ];
+            const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+            window.open(randomWebsite, '_blank');
+        }
+
+        function generateUUID() {
+            const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+            alert("Generated UUID: " + uuid);
+        }
+
+        function toggleAutoClicker() {
+            if (autoClickerInterval) {
+                clearInterval(autoClickerInterval);
+                autoClickerInterval = null;
+                alert("Auto Clicker stopped.");
+            } else {
+                const interval = prompt("Enter the click interval in milliseconds:", "1000");
+                if (interval !== null && !isNaN(interval) && interval > 0) {
+                    autoClickerInterval = setInterval(() => {
+                        document.elementFromPoint(10, 10).click(); // Adjust coordinates as needed
+                    }, interval);
+                    alert("Auto Clicker started with interval: " + interval + " ms.");
+                }
+            }
+        }
+
+        function generatePassword() {
+            const length = prompt("Enter the desired password length:", "12");
+            if (length && !isNaN(length) && length > 0) {
+                const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+                let password = "";
+                for (let i = 0; i < length; i++) {
+                    const randomIndex = Math.floor(Math.random() * charset.length);
+                    password += charset[randomIndex];
+                }
+                alert("Generated Password: " + password);
+            }
+        }
+    </script>
 </body>
 </html>
